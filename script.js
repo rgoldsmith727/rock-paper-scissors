@@ -7,6 +7,6 @@ function getComputerChoice() {
   return choices[rand]
 }
 
-/* function getHumanChoice() {
+function getHumanChoice() {
   return prompt('Choose Rock, Paper, or Scissors')
-} */
+}
