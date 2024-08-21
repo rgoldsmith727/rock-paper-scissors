@@ -13,11 +13,7 @@ const getComputerChoice = () => {
 
 const isWinner = () => {
   if (humanScore === 5 || computerScore === 5) {
-    if (humanScore > computerScore) {
-      gameResultsDiv.textContent = `You Win!`
-    } else {
-      gameResultsDiv.textContent = 'You lose!'
-    }
+    gameResultsDiv.textContent = humanScore > computerScore ? `You Win!` : `You Lose!`
     btnContainer.removeEventListener('click', activateRound)
   }
 }
