@@ -1,3 +1,7 @@
+const roundResultsDiv = document.querySelector('#roundResults')
+const scoreDiv = document.querySelector('#score')
+const gameResultsDiv = document.querySelector('#gameResults')
+
 let humanScore = 0
 let computerScore = 0
 
@@ -10,9 +14,9 @@ const getComputerChoice = () => {
 const isWinner = () => {
   if (humanScore === 5 || computerScore === 5) {
     if (humanScore > computerScore) {
-      console.log(`You Win!`)
+      gameResultsDiv.textContent = `You Win!`
     } else {
-      console.log('You lose!')
+      gameResultsDiv.textContent = 'You lose!'
     }
     btnContainer.removeEventListener('click', activateRound)
   }
@@ -29,23 +33,23 @@ const playRound = (humanChoice) => {
   humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1)
 
   if (humanChoice === computerChoice) { 
-    console.log(`It's a tie!`) 
+    roundResultsDiv.textContent = `It's a tie!` 
     return
   }
 
   if ((humanChoice === 'Rock' && computerChoice === 'Scissors') ||
     (humanChoice === 'Paper' && computerChoice === 'Rock') ||
     (humanChoice === 'Scissors' && computerChoice === 'Paper')) {
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+    roundResultsDiv.textContent = `You win! ${humanChoice} beats ${computerChoice}`
     humanScore += 1
-    console.log(`Player: ${humanScore} Computer: ${computerScore}`)
+    scoreDiv.textContent = `Player: ${humanScore} Computer: ${computerScore}`
     isWinner()
     return
   }
   
-  console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+  roundResultsDiv.textContent = `You lose! ${computerChoice} beats ${humanChoice}`
   computerScore += 1
-  console.log(`Player: ${humanScore} Computer: ${computerScore}`)
+  scoreDiv.textContent = `Player: ${humanScore} Computer: ${computerScore}`
   isWinner()
   return
 
@@ -53,6 +57,9 @@ const playRound = (humanChoice) => {
 
 const btnContainer = document.querySelector('#btnContainer')
 btnContainer.addEventListener('click', activateRound)
+
+
+
 
 
 
